@@ -83,6 +83,15 @@ let blk_record fields =
   in
   Lambda.Blk_record all_labels_info
 
+let blk_record_inlined fields name num_nonconst =
+  let fields =
+    Array.map
+      (fun ((lbl : label), _) ->
+        Ext_list.find_def lbl.Types.lbl_attributes find_name lbl.lbl_name)
+      fields
+  in
+  Lambda.Blk_record_inlined { fields; name; num_nonconst }
+
 let check_bs_attributes_inclusion (attrs1 : Parsetree.attributes)
     (attrs2 : Parsetree.attributes) lbl_name =
   let a = Ext_list.find_def attrs1 find_name lbl_name in

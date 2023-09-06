@@ -10,7 +10,7 @@ Test `@mel.as` in inline record
   
   
   var user = /* User */{
-    name: "my name"
+    author: "my name"
   };
   
   exports.user = user;
